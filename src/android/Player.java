@@ -232,6 +232,9 @@ public class Player {
         exoView.setOnTouchListener(onTouchListener);
 
         LayoutProvider.setupController(exoView, activity, config.getController());
+        if (!config.getShowBuffering()) {
+            LayoutProvider.setBufferingVisibility(exoView, activity, false);
+        }
     }
 
     public void createDialog() {
@@ -262,6 +265,10 @@ public class Player {
         exoView.requestFocus();
         exoView.setOnTouchListener(onTouchListener);
         LayoutProvider.setupController(exoView, activity, config.getController());
+
+        if (!config.getShowBuffering()) {
+            LayoutProvider.setBufferingVisibility(exoView, activity, false);
+        }
     }
 
     private int setupAudio() {
