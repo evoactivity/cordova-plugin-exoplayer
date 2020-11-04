@@ -67,12 +67,12 @@ public class LayoutProvider {
             parentView.setUseController(true);
             setupButtons(parentView, activity, controller);
             setupBar(parentView, activity, controller);
+            setupBuffering(parentView, activity, controller);
         }
         else {
             parentView.setUseController(false);
         }
 
-        setupBuffering(parentView, activity, controller);
     }
 
     private static void setupButtons(SimpleExoPlayerView parentView, Activity activity, JSONObject controller) {
@@ -168,10 +168,12 @@ public class LayoutProvider {
     private static void setupBuffering(SimpleExoPlayerView parentView, Activity activity, JSONObject controller) {
         String bufferingColor = controller.optString("bufferingColor");
         ProgressBar bufferingBar = (ProgressBar)findView(parentView, activity, "exo_buffering");
-        if (null != bufferingBar && null != bufferingColor) {
-            bufferingBar.getIndeterminateDrawable().setColorFilter(Color.parseColor(bufferingColor), android.graphics.PorterDuff.Mode.MULTIPLY);
-        }
-        if (!config.getShowBuffering()) {
+
+        if (config.getShowBuffering()) {
+            if (null != bufferingBar && null != bufferingColor) {
+                bufferingBar.getIndeterminateDrawable().setColorFilter(Color.parseColor(bufferingColor), android.graphics.PorterDuff.Mode.MULTIPLY);
+            }
+        } else {
             bufferingBar.setVisibility(View.GONE);
         }
     }

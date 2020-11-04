@@ -99,6 +99,6 @@ public class Configuration {
     }
 
     public boolean getShowBuffering() {
-        return config.optBoolean("showBuffering");
+        return config.optBoolean("showBuffering", false);
     }
 }
