@@ -67,14 +67,12 @@ public class LayoutProvider {
             parentView.setUseController(true);
             setupButtons(parentView, activity, controller);
             setupBar(parentView, activity, controller);
-
-            if (config.getShowBuffering()) {
-                setupBuffering(parentView, activity, controller);
-            }
         }
         else {
             parentView.setUseController(false);
         }
+
+        setupBuffering(parentView, activity, controller);
     }
 
     private static void setupButtons(SimpleExoPlayerView parentView, Activity activity, JSONObject controller) {
