@@ -67,7 +67,10 @@ public class LayoutProvider {
             parentView.setUseController(true);
             setupButtons(parentView, activity, controller);
             setupBar(parentView, activity, controller);
-            setupBuffering(parentView, activity, controller);
+
+            if (config.getShowBuffering()) {
+                setupBuffering(parentView, activity, controller);
+            }
         }
         else {
             parentView.setUseController(false);
@@ -172,10 +175,10 @@ public class LayoutProvider {
         }
     }
 
-    public static void setBufferingVisibility(SimpleExoPlayerView parentView, Activity activity, boolean visibile) {
+    public static void setBufferingVisibility(SimpleExoPlayerView parentView, Activity activity, boolean visible) {
         ProgressBar progressBar = (ProgressBar)findView(parentView, activity, "exo_buffering");
         if (null != progressBar) {
-            progressBar.setVisibility(visibile ? View.VISIBLE : View.GONE);
+            progressBar.setVisibility(visible ? View.VISIBLE : View.GONE);
         }
     }
 
