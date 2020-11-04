@@ -173,6 +173,9 @@ public class LayoutProvider {
         if (null != bufferingBar && null != bufferingColor) {
             bufferingBar.getIndeterminateDrawable().setColorFilter(Color.parseColor(bufferingColor), android.graphics.PorterDuff.Mode.MULTIPLY);
         }
+        if (!config.getShowBuffering()) {
+            bufferingBar.setVisibility(View.GONE);
+        }
     }
 
     public static void setBufferingVisibility(SimpleExoPlayerView parentView, Activity activity, boolean visible) {
