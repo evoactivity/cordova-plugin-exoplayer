@@ -234,7 +234,7 @@ public class Player {
         LayoutProvider.setupController(exoView, activity, config.getController());
         if (!config.getShowBuffering()) {
             JSONObject payload = new JSONObject();
-            payload.put('message', 'hello')
+            payload.put("message", "hello");
             new CallbackResponse(Player.this.callbackContext).send(PluginResult.Status.OK, payload, true);
             LayoutProvider.setBufferingVisibility(exoView, activity, false);
         }
