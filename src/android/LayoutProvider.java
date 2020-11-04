@@ -168,13 +168,8 @@ public class LayoutProvider {
     private static void setupBuffering(SimpleExoPlayerView parentView, Activity activity, JSONObject controller) {
         String bufferingColor = controller.optString("bufferingColor");
         ProgressBar bufferingBar = (ProgressBar)findView(parentView, activity, "exo_buffering");
-
-        if (config.getShowBuffering()) {
-            if (null != bufferingBar && null != bufferingColor) {
-                bufferingBar.getIndeterminateDrawable().setColorFilter(Color.parseColor(bufferingColor), android.graphics.PorterDuff.Mode.MULTIPLY);
-            }
-        } else {
-            bufferingBar.setVisibility(View.GONE);
+        if (null != bufferingBar && null != bufferingColor) {
+            bufferingBar.getIndeterminateDrawable().setColorFilter(Color.parseColor(bufferingColor), android.graphics.PorterDuff.Mode.MULTIPLY);
         }
     }
 
